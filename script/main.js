@@ -1,14 +1,8 @@
-// main.js
 // Import the data to customize and insert them into page
 const fetchData = () => {
   fetch("customize.json")
     .then(data => data.json())
     .then(data => {
-      const today = new Date();
-      const targetDate = new Date(2024, 11, 13); // 月份从0开始，11表示12月
-      const diffTime = today - targetDate;
-      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-      data.text1 = data.text1.replace('${diffDays}', diffDays);
       dataArr = Object.keys(data)
       dataArr.map(customData => {
         if (data[customData] !== "") {
@@ -35,11 +29,6 @@ const fetchData = () => {
     })
 }
 
-
-// 在文档加载完成后运行 fetchData 函数
-document.addEventListener("DOMContentLoaded", () => {
-  fetchData();
-});
 let audio = null
 
 // 在文档加载时预加载音频
