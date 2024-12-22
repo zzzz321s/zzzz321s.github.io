@@ -14,24 +14,8 @@ const fetchData = () => {
 
       const dataArr = Object.keys(data);
       dataArr.map(customData => {
-        if (data[customData] !== "") {
-          if (customData === "imagePath") {
-            document
-              .querySelector(`[data-node-name*="${customData}"]`)
-              .setAttribute("src", data[customData])
-          } else {
-            document.querySelector(`[data-node-name*="${customData}"]`).innerText = data[customData]
-          }
-        }
-
         // 检查迭代是否结束
         // 如果是，则运行动画
-        if (dataArr.length === dataArr.indexOf(customData) + 1) {
-          document.querySelector("#startButton").addEventListener("click", () => {
-            document.querySelector(".startSign").style.display = "none"
-            animationTimeline()
-          });
-        }
         if (data[customData] !== "") {
           if (customData === "imagePath") {
             document
