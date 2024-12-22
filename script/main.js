@@ -32,9 +32,6 @@ const fetchData = () => {
             animationTimeline()
           });
         }
-      });
-      dataArr = Object.keys(data)
-      dataArr.map(customData => {
         if (data[customData] !== "") {
           if (customData === "imagePath") {
             document
