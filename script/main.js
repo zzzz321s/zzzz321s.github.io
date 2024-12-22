@@ -1,6 +1,5 @@
 // main.js
-
-// 定义 fetchData 函数
+// Import the data to customize and insert them into page
 const fetchData = () => {
   fetch("customize.json")
     .then(data => data.json())
@@ -9,13 +8,9 @@ const fetchData = () => {
       const targetDate = new Date(2024, 11, 13); // 月份从0开始，11表示12月
       const diffTime = today - targetDate;
       const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-      
       data.text1 = data.text1.replace('${diffDays}', diffDays);
-
-      const dataArr = Object.keys(data);
+      dataArr = Object.keys(data)
       dataArr.map(customData => {
-        // 检查迭代是否结束
-        // 如果是，则运行动画
         if (data[customData] !== "") {
           if (customData === "imagePath") {
             document
@@ -37,11 +32,8 @@ const fetchData = () => {
           // animationTimeline()
         }
       })
-    });
-};
-
-
-
+    })
+}
 
 
 // 在文档加载完成后运行 fetchData 函数
