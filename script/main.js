@@ -14,7 +14,11 @@ const fetchData = () => {
             document.querySelector(`[data-node-name*="${customData}"]`).innerText = data[customData]
           }
         }
-
+        const today = new Date();
+        const targetDate = new Date(2024, 11, 13); // 月份从0开始，11表示12月
+        const diffTime = today - targetDate;
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+        data.text1 = data.text1.replace('${diffDays}', diffDays);
         // Check if the iteration is over
         // Run amimation if so
         if (dataArr.length === dataArr.indexOf(customData) + 1) {
