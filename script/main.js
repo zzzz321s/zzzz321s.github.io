@@ -33,8 +33,35 @@ const fetchData = () => {
           });
         }
       });
+      dataArr = Object.keys(data)
+      dataArr.map(customData => {
+        if (data[customData] !== "") {
+          if (customData === "imagePath") {
+            document
+              .querySelector(`[data-node-name*="${customData}"]`)
+              .setAttribute("src", data[customData])
+          } else {
+            document.querySelector(`[data-node-name*="${customData}"]`).innerText = data[customData]
+          }
+        }
+
+        // Check if the iteration is over
+        // Run amimation if so
+        if (dataArr.length === dataArr.indexOf(customData) + 1) {
+          document.querySelector("#startButton").addEventListener("click", () => {
+            document.querySelector(".startSign").style.display = "none"
+            animationTimeline()
+          }
+          )
+          // animationTimeline()
+        }
+      })
     });
 };
+
+
+
+
 
 // 在文档加载完成后运行 fetchData 函数
 document.addEventListener("DOMContentLoaded", () => {
